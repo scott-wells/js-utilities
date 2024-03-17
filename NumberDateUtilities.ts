@@ -1,7 +1,9 @@
 const floatNum: number = 19.48893;
-const dateStr: string = "2024-03-17";
-const dateStr2: string = "2024-03-17";
-const dateStr3: string = "2024-01-01";
+const dateStr: string = "2024-03-15";
+const dateStr2: string = "2024-03-15";
+const dateStr3: string = "2024-03-01";
+const olderDate: Date = new Date(2024,2,1,12,30,30);
+const newerDate: Date = new Date(2024,2,15);
 
 function getRandomNumberInRange(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -56,6 +58,44 @@ function compareDates(a: Date, b: Date): number {
     if (date1 > date2) result = 1;
     return result;
 }
+
+/**
+ * Takes two dates and calculates difference in milliseconds.
+ * @param {Date} a - Older date 
+ * @param {Date} b - Newer date
+ * @returns {number} Returns result in milliseconds.
+ */
+function calculateDifferenceOfDates(a: Date, b: Date): number {
+    const num1 = Number(a);
+    const num2 = Number(b);
+    return num1 - num2;
+}
+
+function convertMillisecsToDays(milliseconds: number): number {
+    const millisecondsPerDay = 1000*60*60*24;
+    // @ts-ignore
+    return Math.trunc(milliseconds / millisecondsPerDay);
+}
+
+function convertMillisecsToHours(milliseconds: number): number {
+    const millisecondsPerHour = 1000*60*60;
+    // @ts-ignore
+    return Math.trunc(milliseconds / millisecondsPerHour);
+}
+
+function convertMillisecsToMinutes(milliseconds: number): number {
+    const millisecondsPerMinute = 1000*60;
+    // @ts-ignore
+    return Math.trunc(milliseconds / millisecondsPerMinute);
+}
+
+function convertMillisecsToSeconds(milliseconds: number): number {
+    const millisecondsPerSecond = 1000;
+    // @ts-ignore
+    return Math.trunc(milliseconds / millisecondsPerSecond);
+}
+
+
 
 export default {
     getRandomNumberInRange,

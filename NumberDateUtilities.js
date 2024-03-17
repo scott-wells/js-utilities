@@ -1,9 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var floatNum = 19.48893;
-var dateStr = "2024-03-17";
-var dateStr2 = "2024-03-17";
-var dateStr3 = "2024-01-01";
+var dateStr = "2024-03-15";
+var dateStr2 = "2024-03-15";
+var dateStr3 = "2024-03-01";
+var olderDate = new Date(2024, 2, 1, 12, 30, 30);
+var newerDate = new Date(2024, 2, 15);
 function getRandomNumberInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -14,7 +16,7 @@ function roundNumberToDecimalPlace(number, decimalPlace) {
     return roundedNum;
 }
 /**
- * Extract a date from a string (Format: "2024-03-17", "2024/03/17", etc)
+ * Extract a date from a string ("YYYY-MM-DD", "YYYY/MM/DD", etc)
  * @param {string} dateString
  * @param {string} delimiter
  * @returns {Date} The new date after performing the calculation.
@@ -56,10 +58,48 @@ function compareDates(a, b) {
         result = 1;
     return result;
 }
-console.log(compareDates(extractDate(dateStr, '-'), extractDate(dateStr2, '-')), compareDates(extractDate(dateStr2, '-'), extractDate(dateStr3, '-')), compareDates(extractDate(dateStr3, '-'), extractDate(dateStr2, '-')));
+/**
+ * Takes two dates and calculates difference in milliseconds.
+ * @param {Date} a - Older date
+ * @param {Date} b - Newer date
+ * @returns {number} Returns result in milliseconds.
+ */
+function calculateDifferenceOfDates(a, b) {
+    var num1 = Number(a);
+    var num2 = Number(b);
+    return num1 - num2;
+}
+function convertMillisecsToDays(milliseconds) {
+    var millisecondsPerDay = 1000 * 60 * 60 * 24;
+    // @ts-ignore
+    return Math.trunc(milliseconds / millisecondsPerDay);
+}
+function convertMillisecsToHours(milliseconds) {
+    var millisecondsPerHour = 1000 * 60 * 60;
+    // @ts-ignore
+    return Math.trunc(milliseconds / millisecondsPerHour);
+}
+function convertMillisecsToMinutes(milliseconds) {
+    var millisecondsPerMinute = 1000 * 60;
+    // @ts-ignore
+    return Math.trunc(milliseconds / millisecondsPerMinute);
+}
+function convertMillisecsToSeconds(milliseconds) {
+    var millisecondsPerSecond = 1000;
+    // @ts-ignore
+    return Math.trunc(milliseconds / millisecondsPerSecond);
+}
+var differenceInMs = calculateDifferenceOfDates(newerDate, olderDate);
+console.log("olderDate ", olderDate, "newerDate ", newerDate);
+console.log(calculateDifferenceOfDates(newerDate, olderDate));
+console.log(convertMillisecsToSeconds(differenceInMs));
+console.log(convertMillisecsToMinutes(differenceInMs));
+console.log(convertMillisecsToHours(differenceInMs));
+console.log(convertMillisecsToDays(differenceInMs));
 exports.default = {
     getRandomNumberInRange: getRandomNumberInRange,
     roundNumberToDecimalPlace: roundNumberToDecimalPlace,
     extractDate: extractDate,
     calculateDaysFromDate: calculateDaysFromDate,
+    compareDates: compareDates
 };
