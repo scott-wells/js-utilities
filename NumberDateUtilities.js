@@ -1,11 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var floatNum = 19.48893;
-var dateStr = "2024-03-15";
-var dateStr2 = "2024-03-15";
-var dateStr3 = "2024-03-01";
-var olderDate = new Date(2024, 2, 1, 12, 30, 30);
-var newerDate = new Date(2024, 2, 15);
 function getRandomNumberInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -89,17 +81,30 @@ function convertMillisecsToSeconds(milliseconds) {
     // @ts-ignore
     return Math.trunc(milliseconds / millisecondsPerSecond);
 }
-var differenceInMs = calculateDifferenceOfDates(newerDate, olderDate);
-console.log("olderDate ", olderDate, "newerDate ", newerDate);
-console.log(calculateDifferenceOfDates(newerDate, olderDate));
-console.log(convertMillisecsToSeconds(differenceInMs));
-console.log(convertMillisecsToMinutes(differenceInMs));
-console.log(convertMillisecsToHours(differenceInMs));
-console.log(convertMillisecsToDays(differenceInMs));
-exports.default = {
-    getRandomNumberInRange: getRandomNumberInRange,
-    roundNumberToDecimalPlace: roundNumberToDecimalPlace,
-    extractDate: extractDate,
-    calculateDaysFromDate: calculateDaysFromDate,
-    compareDates: compareDates
-};
+var SetPerformanceTimer = /** @class */ (function () {
+    function SetPerformanceTimer() {
+        this.startTicker = 0;
+    }
+    SetPerformanceTimer.prototype.start = function () {
+        var ticker = window.performance.now();
+        console.log("--> Start Performance Timer");
+        this.startTicker = ticker;
+        return;
+    };
+    SetPerformanceTimer.prototype.end = function () {
+        var ticker = window.performance.now();
+        var diff = ticker - this.startTicker;
+        console.log("--> End Performance Timer");
+        console.log("Time Elapsed: ", diff + "ms");
+        return;
+    };
+    return SetPerformanceTimer;
+}());
+// export {
+//     getRandomNumberInRange,
+//     roundNumberToDecimalPlace,
+//     extractDate,
+//     calculateDaysFromDate,
+//     compareDates,
+//     SetPerformanceTimer
+// };

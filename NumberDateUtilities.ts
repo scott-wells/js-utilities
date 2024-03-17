@@ -1,10 +1,3 @@
-const floatNum: number = 19.48893;
-const dateStr: string = "2024-03-15";
-const dateStr2: string = "2024-03-15";
-const dateStr3: string = "2024-03-01";
-const olderDate: Date = new Date(2024,2,1,12,30,30);
-const newerDate: Date = new Date(2024,2,15);
-
 function getRandomNumberInRange(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -95,12 +88,28 @@ function convertMillisecsToSeconds(milliseconds: number): number {
     return Math.trunc(milliseconds / millisecondsPerSecond);
 }
 
+class SetPerformanceTimer {
+    startTicker = 0;
+    start() {
+        const ticker = window.performance.now();
+        console.log("--> Start Performance Timer");
+        this.startTicker = ticker;
+        return;
+    }
+    end() {
+        const ticker = window.performance.now();
+        const diff = ticker - this.startTicker;
+        console.log("--> End Performance Timer");
+        console.log("Time Elapsed: ", diff + "ms");
+        return;
+    }
+}
 
-
-export default {
-    getRandomNumberInRange,
-    roundNumberToDecimalPlace,
-    extractDate,
-    calculateDaysFromDate,
-    compareDates
-};
+// export {
+//     getRandomNumberInRange,
+//     roundNumberToDecimalPlace,
+//     extractDate,
+//     calculateDaysFromDate,
+//     compareDates,
+//     SetPerformanceTimer
+// };
