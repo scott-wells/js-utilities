@@ -1,12 +1,3 @@
-const str: string = "This is a test string";
-const str2: string = "";
-const str3: string = "This is a test string";
-const strList: string = "This is a list of items: burger, fries, soda, milkshake, hotdog.";
-const strArr: Array<string> = extractArrayListFromString(strList);
-const number: number = 199.9999;
-const email1: string = "abeLincoln@gmail.com";
-const email2: string = "abeLincoln@gmail .com";
-
 function isNonEmptyString(string: string): boolean {
     let flag: boolean = false;
     if (typeof string === "string" && string.length > 0) flag = true;

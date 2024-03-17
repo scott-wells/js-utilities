@@ -1,11 +1,5 @@
-var str = "This is a test string";
-var str2 = "";
-var str3 = "This is a test string";
-var strList = "This is a list of items: burger, fries, soda, milkshake, hotdog.";
-var strArr = extractArrayListFromString(strList);
-var number = 199.9999;
-var email1 = "abeLincoln@gmail.com";
-var email2 = "abeLincoln@gmail .com";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function isNonEmptyString(string) {
     var flag = false;
     if (typeof string === "string" && string.length > 0)
@@ -35,7 +29,7 @@ function extractArrayListFromString(string) {
 function buildStringListFromArray(array) {
     var str = "";
     array.forEach(function (e, i) {
-        if (i == array.length - 1) {
+        if (i === array.length - 1) {
             str += e;
         }
         else {
@@ -51,4 +45,11 @@ function validateEmailAddress(email) {
         flag = true;
     return flag;
 }
-console.log(validateEmailAddress(email1), validateEmailAddress(email2));
+exports.default = {
+    buildStringListFromArray: buildStringListFromArray,
+    doStringsMatch: doStringsMatch,
+    extractArrayListFromString: extractArrayListFromString,
+    formatNumberToCurrency: formatNumberToCurrency,
+    isNonEmptyString: isNonEmptyString,
+    validateEmailAddress: validateEmailAddress
+};
